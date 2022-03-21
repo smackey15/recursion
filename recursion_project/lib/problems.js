@@ -114,7 +114,13 @@ function pow(base, exponent) {
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
 function flatten(data) {
+    if (!Array.isArray(data)) return [data];
 
+    let flattened = []
+    data.forEach(el => {
+        flattened.push(...flatten(el))
+    })
+    return flattened;
 }
 
 // Write a function, fileFinder(directories, targetFile), that accepts an object representing directories and a string respresenting a filename.
